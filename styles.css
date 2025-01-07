@@ -195,6 +195,7 @@ nav .right a span {
   height: 100%;
   border: none;
   background-color: antiquewhite;
+  object-fit: contain;
 }
 
 /* SECTION 3: Contact */
