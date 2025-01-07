@@ -144,15 +144,9 @@
   
       // If the user just clicks (not double-click), load the URL in the iframe
       iframe.src = url;
-  
-      // Wait for the iframe to load, then adjust the height based on its content
-      iframe.onload = function() {
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-  
-        // Ensure the iframe content adjusts to the content's height
-        iframe.style.height = iframeDocument.documentElement.scrollHeight + 'px';
+
       };
-    }
+  
   
     function openProject(url) {
       // Open the provided URL in a new tab (for double-click event)
