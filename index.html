@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+  <title>Portfolio</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="left">
+      <a href="/">My Portfolio</a>
+    </div>
+
+    <div class="right">
+      <a href="https://github.com/Ematttt" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github"></i>
+        <span>Github</span>
+      </a>
+      
+      <a href="https://www.facebook.com/rayalegado.01" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-facebook"></i>
+        <span>Facebook</span>
+      </a>
+      
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alegadoraymart@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: Hero -->
+    <section class="hero-section">
+      <div class="text">
+        <h2>Hi, I'm Raymart Alegado</h2>
+        <h3>A Bachelor of Science in Computer Engineering Student</h3>
+        <p>Passionate about technology and innovation, I aim to solve real-world problems through creative engineering solutions 
+          and contribute meaningfully to the tech industry.</p>
+
+        <div class="links">
+
+          <a href="resume.html">
+            <i class="fa-solid fa-file"></i>
+            <span>My Resume</span>
+          </a>
+
+          <a href="#projects">
+            <i class="fa-solid fa-pen"></i>
+            <span>Projects</span>
+          </a>
+          
+          <a href="#contact">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="headshot">
+        <img src="images/mypicture.png" alt="Raymart Alegado headshot">
+      </div>
+
+    </section>
+
+    <!-- SECTION 2: Projects -->
+    <section id="projects" class="projects-section">
+      <h2>Projects</h2>
+      <div class="text">
+        Showcasing innovative and functional website projects designed to solve problems, enhance user experiences, 
+        and demonstrate creativity in web development. These are the projects I've done this 1st Semester.
+      </div>
+    
+      <!-- Project Cells -->
+      <div class="cells">
+        <div class="cell" onclick="loadProject('https://ematttt.github.io/mp3website2/')" ondblclick="openProject('https://ematttt.github.io/mp3website2/')">
+          <img src="images/mymp3.png" alt="MP3 Website">
+          <span>MP3 WEBSITE</span>
+        </div>
+    
+        <div class="cell" onclick="loadProject('https://ematttt.github.io/article/index.html')" ondblclick="openProject('https://ematttt.github.io/article/index.html')">
+          <img src="images/myarticle.png" alt="My Article">
+          <span>MY ARTICLE</span>
+        </div>
+    
+        <div class="cell" onclick="loadProject('https://ematttt.github.io/myfavorite/')" ondblclick="openProject('https://ematttt.github.io/myfavorite/')">
+          <img src="images/myfavorite.png" alt="My Favorite">
+          <span>MY FAVORITE</span>
+        </div>
+      </div>
+    
+      <!-- Box to Display the Selected Project -->
+      <div class="project-display-box">
+        <iframe id="project-frame" src="" frameborder="0"></iframe>
+      </div>
+    </section>
+    
+
+    <!-- SECTION 3: Contact -->
+    <section id="contact" class="contact-section">
+      <h2>Contact</h2>
+
+      <div class="group">
+        <div class="text">
+          Feel free to get in touch with me for collaborations, project inquiries, or any questions about my work and skills. 
+          I’m always open to constructive criticism and feedback, as it helps me improve and deliver better results. 
+          Whether you're looking for a creative partner, need technical expertise, or simply want to connect, 
+          I'd be happy to hear from you and explore how we can work together to achieve great results.
+        </div>
+
+        <form>
+          <label for="name">Name</label>
+          <input type="text" id="name">
+
+          <label for="email">Email</label>
+          <input type="email" id="email">
+
+          <label for="message">Message</label>
+          <textarea id="message" cols="30" rows="10"></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  
+    // Consolidating the loadProject function
+    function loadProject(url) {
+      const iframe = document.getElementById('project-frame');
+  
+      // If the user just clicks (not double-click), load the URL in the iframe
+      iframe.src = url;
+  
+      // Wait for the iframe to load, then adjust the height based on its content
+      iframe.onload = function() {
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+  
+        // Ensure the iframe content adjusts to the content's height
+        iframe.style.height = iframeDocument.documentElement.scrollHeight + 'px';
+      };
+    }
+  
+    function openProject(url) {
+      // Open the provided URL in a new tab (for double-click event)
+      window.open(url, '_blank');
+    }
+  </script>
+  
+
+</body>
+</html>
