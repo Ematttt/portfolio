@@ -51,12 +51,18 @@ nav .left a {
   font-weight: 600;
 }
 
-nav .right a {
+nav .right {
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  justify-content: flex-end; /* Pushes content to the right */
+}
+
+nav .right a{
   color: var(--text-color);
   margin: 0 10px;
 }
 
-nav .right a:last-child {
+nav .right .email {
   color: var(--background-color);
   background-color: var(--text-color);
   padding: 5px 15px;
@@ -65,6 +71,10 @@ nav .right a:last-child {
 
 nav .right a span {
   margin-left: 5px;
+}
+
+.logout{
+  display: none;
 }
 
 /* SECTION 1: Hero */
@@ -185,7 +195,7 @@ nav .right a span {
   max-width: 800px;
   height: 400px;
   margin: 20px auto;
-  border: 2px solid #ddd;
+  border: 2px solid var(--text-color);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -194,8 +204,15 @@ nav .right a span {
   width: 100%;
   height: 100%;
   border: none;
-  background-color: antiquewhite;
+  background-color: var(--text-color);
   object-fit: contain;
+}
+
+.projects-section .cells .cell.active {
+  background-color: var(--text-color);; /* Highlight color */
+  color: var(--background-color); /* Text color contrast */
+  border-color: var(--text-color); /* Border color */
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.39); /* More pronounced shadow */
 }
 
 /* SECTION 3: Contact */
@@ -234,6 +251,7 @@ nav .right a span {
   margin-bottom: 15px;
   outline: none;
   resize: none;
+  color: var(--text-color);
 }
 
 .contact-section .group form button {
@@ -289,7 +307,7 @@ nav .right a span {
     font-size: 3.5vw; /* Adjust navbar link size */
   }
 
-  nav .right a:last-child {
+  nav .right .email {
     color: var(--text-color);
     background-color: transparent;
     padding: 0;
@@ -326,3 +344,5 @@ nav .right a span {
     padding: 0 5%; /* Add padding as a percentage */
   }
 }
+
+
