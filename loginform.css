@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000; /* Darkest shade */
+  font-size: 14px;
+  color: #66fcf1; /* Bright text */
+}
+
+/* Animated Background */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #66fcf1, #51c9c0, #286460, #0a1918);
+  background-size: 400% 400%;
+  animation: gradient 8s infinite;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  background-color: #0a1918; /* Darker card background */
+  width: 760px;
+  max-width: 100vw;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.forms-container {
+  position: relative;
+  width: 50%;
+  text-align: center;
+}
+
+.forms-container .form-control {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 480px;
+  transition: all 0.5s ease-in;
+}
+
+.forms-container .form-control h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #5be2d8; /* Highlighted text */
+}
+
+.forms-container .form-control form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+}
+
+.forms-container .form-control form input {
+  margin: 10px 0;
+  border: 1px solid #1e4b48; /* Subtle border */
+  padding: 15px;
+  background-color: #143230; /* Dark input background */
+  border-radius: 5px;
+  color: #66fcf1; /* Bright text */
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.forms-container .form-control form input:focus {
+  outline: none;
+  border-color: #5be2d8; /* Highlight */
+}
+
+.forms-container .form-control form button {
+  border: none;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #47b0a8; /* Button color */
+  border-radius: 5px;
+  color: #000000; /* Black text */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.forms-container .form-control form button:hover {
+  background-color: #3d9790; /* Darker hover */
+}
+
+.forms-container .form-control span {
+  margin: 10px 0;
+  color: whitesmoke; /* Muted text */
+}
+
+.forms-container .form-control .socials i {
+  margin: 0 5px;
+  color: #0a1918; /* Dark icon */
+  background-color: #286460; /* Muted background */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.forms-container .form-control .socials .fa-facebook-f {
+  padding: 5px 8px;
+  background-color: #5be2d8; /* Facebook blue */
+}
+
+.forms-container .form-control .socials .fa-google {
+  padding: 5px 5px;
+  background: linear-gradient(45deg, #66fcf1, #5be2d8, #47b0a8, #1e4b48);
+  color: black;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+}
+
+.forms-container .form-control .socials i:hover {
+  transform: scale(1.1);
+}
+
+.signup-form {
+  opacity: 0;
+  z-index: 1;
+  left: 200%;
+}
+
+.signin-form {
+  opacity: 1;
+  z-index: 2;
+  left: 0%;
+}
+
+.intros-container {
+  position: relative;
+  left: 50%;
+  width: 50%;
+  text-align: center;
+}
+
+.intros-container .intro-control {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 480px;
+  color: #66fcf1; /* Bright text */
+  background: linear-gradient(170deg, #5be2d8, #286460); /* Gradient background */
+  transition: all 0.5s ease-in;
+}
+
+.intros-container .intro-control .intro-control__inner {
+  margin: 0 30px;
+}
+
+.intros-container .intro-control button {
+  border: none;
+  padding: 15px 30px;
+  background-color: black; /* Bright button */
+  border-radius: 50px;
+  color: whitesmoke; /* Black text */
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.intros-container .intro-control button:hover {
+  background-color: #1e4b48;
+}
+
+.intros-container .intro-control h2,
+.intros-container .intro-control p {
+  margin: 10px 0;
+}
+
+.intros-container .intro-control h2 {
+  color: whitesmoke; /* Bright title */
+}
+
+.intros-container .intro-control p {
+  color: whitesmoke; /* Bright description */
+}
+
+.signin-intro {
+  opacity: 1;
+  z-index: 2;
+}
+
+.signup-intro {
+  opacity: 0;
+  z-index: 1;
+}
+
+.change .signup-form {
+  opacity: 1;
+  z-index: 2;
+  transform: translateX(-100%);
+}
+
+.change .signup-form button {
+  background-color: #3d9790 !important;
+}
+
+.change .signin-form {
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(-100%);
+}
+
+.change .intro-control {
+  transform: translateX(-100%);
+  background: linear-gradient(170deg, #51c9c0, #286460);
+}
+
+.change .signin-intro {
+  opacity: 0;
+  z-index: 1;
+}
+
+.change .signup-intro {
+  opacity: 1;
+  z-index: 2;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .forms-container {
+    order: 2;
+    width: 100%;
+    height: 50vh;
+  }
+  .forms-container .form-control {
+    position: absolute;
+    height: 50vh;
+  }
+  .signup-form {
+    left: 0%;
+    margin-top: 70px;
+  }
+  .intros-container {
+    order: 1;
+    width: 100%;
+    left: 0%;
+    height: 40vh;
+  }
+  .intros-container .intro-control {
+    position: absolute;
+    height: 40vh;
+  }
+
+  .change .signup-form {
+    transform: translateX(0%);
+  }
+  .change .signin-form {
+    transform: translateX(0%);
+  }
+  .change .intro-control {
+    transform: translateX(0%);
+  }
+}
+
+/* Add a floating effect */
+.forms-container form input,
+.forms-container form button {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.forms-container form input:hover,
+.forms-container form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}

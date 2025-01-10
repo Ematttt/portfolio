@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="loginform.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="container">
+        <div class="forms-container">
+            <div class="form-control signup-form">
+                <form id="signup-form" novalidate>
+                    <h2>Sign up</h2>
+                    <input type="text" name="username" placeholder="Username" required title="Enter your username">
+                    <input type="email" name="email" placeholder="Email" required title="Enter your email">
+                    <input type="password" name="password" placeholder="Password" required title="Enter your password">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required title="Confirm your password">
+                    <button type="submit">Sign up</button>
+                </form>
+                <span>or sign up with</span>
+                <div class="socials">
+                    <i class="fab fa-facebook-f" title="Sign-up with Facebook"></i>
+                    <i class="fab fa-google" title="Sign-up with Google"></i>
+                </div>
+            </div>
+            <div class="form-control signin-form">
+                <form id="signin-form" novalidate>
+                    <h2>Sign in</h2>
+                    <input type="text" name="username" placeholder="Username" required title="Enter your username">
+                    <input type="password" name="password" placeholder="Enter Password" required title="Enter your password">
+                    <button type="submit">Sign in</button>
+                </form>
+                <span>or sign in with</span>
+                <div class="socials">
+                    <i class="fab fa-facebook-f" title="Sign in with Facebook"></i>
+                    <i class="fab fa-google" title="Sign in with Google"></i>
+                </div>
+            </div>
+        </div>
+        <div class="intros-container">
+            <div class="intro-control signin-intro">
+                <div class="intro-control__inner">
+                    <h2>Welcome back!</h2>
+                    <p>Welcome back! We're happy to see you again. Log in to continue.</p>
+                    <button id="signup-btn">No account yet? Sign up.</button>
+                </div>
+            </div>
+            <div class="intro-control signup-intro">
+                <div class="intro-control__inner">
+                    <h2>Join us!</h2>
+                    <p>Create an account to unlock exclusive offers and rewards.</p>
+                    <button id="signin-btn">Already have an account? Sign in.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const signupBtn = document.getElementById("signup-btn");
+        const signinBtn = document.getElementById("signin-btn");
+        const mainContainer = document.querySelector(".container");
+
+        signupBtn.addEventListener("click", () => {
+            mainContainer.classList.toggle("change");
+        });
+
+        signinBtn.addEventListener("click", () => {
+            mainContainer.classList.toggle("change");
+        });
+
+        function isLoggedIn() {
+            return localStorage.getItem('userLoggedIn') === 'true';
+        }
+
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent form submission
+                localStorage.setItem('userLoggedIn', 'true');
+                alert('Login successful!');
+                window.location.href = 'index.html'; // Redirect back to the main page
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (isLoggedIn()) {
+                alert('You are already logged in. Redirecting to the main page.');
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
