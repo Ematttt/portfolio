@@ -137,82 +137,229 @@ nav .right a span {
 }
 
 /* SECTION 2: Projects */
-.projects-section {
-  padding: 0 50px;
-  padding-top: 2%;
-}
 
-.projects-section h2 {
-  text-align: center;
+.projects-section h2{
+  padding: 0 5%; /* Add padding as a percentage */
   font-size: 35px;
+  padding-top: 2%;
+  margin-bottom: 1%;
 }
 
-.projects-section .text {
-  text-align: center;
-  margin-bottom: 20px;
+.projects-section .text{
+  padding: 0 5%; /* Add padding as a percentage */
+  text-align: justify;
+  margin-bottom: 2%;
 }
 
-.projects-section .cells {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.projects-section .cells .cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-
-  width: 200px;
-  padding: 10px 20px;
-  margin: 10px;
-  border: 1.5px solid #d3d3d3;
-  border-radius: 5px;
-
+.project-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--background-color);
+  border: 1.5px solid #d3d3d3;
+  display: flex;
+  flex-direction: column;
 }
 
-.projects-section .cells .cell:hover {
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: var(--text-color);
+}
+
+.project-description {
+  margin-bottom: 20px;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+.project-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.project-button, .details-button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.projects-section .cells .cell img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  border-radius: 2px;
+.project-button {
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  flex-basis: 60%;
 }
 
-.projects-section .cells .cell span {
-  font-size: 18px;
+.project-button:hover {
+  filter: brightness(0.9);
 }
 
-.project-display-box {
+.details-button {
+  background-color: transparent;
+  border: 2px solid var(--link-color);
+  color: var(--link-color);
+  flex-basis: 35%;
+}
+
+.details-button:hover {
+  background-color: rgba(53, 162, 157, 0.1);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 80%;
   max-width: 800px;
-  height: 400px;
-  margin: 20px auto;
-  border: 2px solid var(--text-color);
-  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: all 0.4s ease;
+  border: 1.5px solid var(--text-color);
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.modal-image {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
-.project-display-box iframe {
+.modal-image img {
   width: 100%;
-  height: 100%;
-  border: none;
-  background-color: var(--text-color);
-  object-fit: contain;
+  display: block;
 }
 
-.projects-section .cells .cell.active {
-  background-color: var(--text-color);; /* Highlight color */
-  color: var(--background-color); /* Text color contrast */
-  border-color: var(--text-color); /* Border color */
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.39); /* More pronounced shadow */
+.modal-description h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.modal-description ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-description li {
+  margin-bottom: 5px;
+}
+
+.modal-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-actions .project-button {
+  min-width: 200px;
+}
+
+/* Responsive adjustments for project section */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    width: 90%;
+    margin: 20% auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-info h3 {
+    font-size: 18px;
+  }
+  
+  .project-description {
+    font-size: 14px;
+  }
+  
+  .project-button, .details-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
 }
 
 /* SECTION 3: Contact */
