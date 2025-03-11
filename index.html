@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="images/p.png">
+  <link rel="icon" type="image/x-icon" href="/images/p.png">
   <title>Portfolio</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
         <h3>A Bachelor of Science in Computer Engineering Student</h3>
         <p>Passionate about technology and innovation, I aim to solve real-world problems through creative engineering solutions and contribute meaningfully to the tech industry.</p>
         <div class="links">
-          <a href="resume.html">
+          <a href="/images/RESUME.pdf" target="_blank">
             <i class="fa-solid fa-file"></i>
             <span>My Resume</span>
           </a>
@@ -64,35 +64,81 @@
       </div>
     </section>
     <!-- SECTION 2: Projects -->
-    <section id="projects" class="projects-section">
+  <section id="projects" class="projects-section">
       <h2>Projects</h2>
       <div class="text">
-        Showcasing innovative and functional website projects designed to solve problems, enhance user experiences, and demonstrate creativity in web development. These are the projects I've done this 1st Semester.
+          Showcasing innovative and functional website projects designed to solve problems, enhance user experiences, and demonstrate creativity in web development. These are the projects I've done this 1st Semester.
       </div>
-      <!-- Project Cells -->
-      <div class="cells">
-        <div class="cell" onclick="loadProject('https://ematttt.github.io/mp3website2/')" ondblclick="openProject('https://ematttt.github.io/mp3website2/')">
-          <img src="images/mymp3.png" alt="MP3 Website">
-          <span>MP3 WEBSITE</span>
-        </div>
-        <div class="cell" onclick="loadProject('https://ematttt.github.io/article/index.html')" ondblclick="openProject('https://ematttt.github.io/article/index.html')">
-          <img src="images/myarticle.png" alt="My Article">
-          <span>MY ARTICLE</span>
-        </div>
-        <div class="cell" onclick="loadProject('https://ematttt.github.io/myfavorite/')" ondblclick="openProject('https://ematttt.github.io/myfavorite/')">
-          <img src="images/myfavorite.png" alt="My Favorite">
-          <span>MY FAVORITE</span>
-        </div>
-        <div class="cell" onclick="loadProject('https://ematttt.github.io/mystory/')" ondblclick="openProject('https://ematttt.github.io/mystory/')">
-          <img src="images/mystory.png" style="border-radius: 50%; background: white;" alt="My Story">
-          <span>MY STORY</span>
+  
+  <!-- Project Grid -->
+  <div class="project-grid">
+    <div class="project-card" data-project="mp3">
+      <div class="project-image">
+        <img src="images/mymp3.png" alt="MP3 Website">
+      </div>
+      <div class="project-info">
+        <h3>MP3 WEBSITE</h3>
+        <p class="project-description">A music player interface with custom controls and playlist management.</p>
+        <div class="project-actions">
+          <a href="https://ematttt.github.io/mp3website2/" target="_blank" class="project-button">View Project</a>
+          <button class="details-button" onclick="toggleDetails('mp3')">Details</button>
         </div>
       </div>
-      <!-- Box to Display the Selected Project -->
-      <div class="project-display-box">
-        <iframe id="project-frame" src="" frameborder="0"></iframe>
+    </div>
+    
+    <div class="project-card" data-project="article">
+      <div class="project-image">
+        <img src="images/myarticle.png" alt="My Article">
       </div>
-    </section>
+      <div class="project-info">
+        <h3>MY ARTICLE</h3>
+        <p class="project-description">A responsive article layout with typography and content organization.</p>
+        <div class="project-actions">
+          <a href="https://ematttt.github.io/article/index.html" target="_blank" class="project-button">View Project</a>
+          <button class="details-button" onclick="toggleDetails('article')">Details</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card" data-project="favorite">
+      <div class="project-image">
+        <img src="images/myfavorite.png" alt="My Favorite">
+      </div>
+      <div class="project-info">
+        <h3>MY FAVORITE</h3>
+        <p class="project-description">A collection of favorite items showcasing personal interests and choices.</p>
+        <div class="project-actions">
+          <a href="https://ematttt.github.io/myfavorite/" target="_blank" class="project-button">View Project</a>
+          <button class="details-button" onclick="toggleDetails('favorite')">Details</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card" data-project="story">
+      <div class="project-image">
+        <img src="images/mystory.png" alt="My Story" style="border-radius: 50%; background: white;">
+      </div>
+      <div class="project-info">
+        <h3>MY STORY</h3>
+        <p class="project-description">An interactive narrative showcasing storytelling through web design.</p>
+        <div class="project-actions">
+          <a href="https://ematttt.github.io/mystory/" target="_blank" class="project-button">View Project</a>
+          <button class="details-button" onclick="toggleDetails('story')">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Project Details Modal -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+      <div id="modal-content">
+        <!-- Content will be inserted dynamically -->
+      </div>
+    </div>
+  </div>
+</section>
     <!-- SECTION 3: Contact -->
     <section id="contact" class="contact-section">
       <h2>Contact</h2>
@@ -113,54 +159,6 @@
     </section>
   </main>
 
-  <script>
-    function isLoggedIn() {
-      return localStorage.getItem('userLoggedIn') === 'true';
-    }
-
-    function loadProject(url) {
-      document.getElementById('project-frame').src = url;
-    }
-
-    function openProject(url) {
-      if (isLoggedIn()) {
-        window.open(url, '_blank');
-      } else {
-        alert('You need to log in first to view the full website.');
-        window.location.href = 'loginform.html';
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const authButtons = document.getElementById('auth-buttons');
-      const logoutIcon = document.getElementById('logout-icon');
-
-      if (isLoggedIn()) {
-        logoutIcon.style.display = 'flex';
-        logoutIcon.addEventListener('click', () => {
-          localStorage.removeItem('userLoggedIn');
-          alert('You have been logged out. Please visit again soon!');
-          window.location.href = 'index.html';
-        });
-      }
-    });
-
-    document.querySelectorAll('.projects-section .cells .cell').forEach(cell => {
-    cell.addEventListener('click', function () {
-    // Remove 'active' class from all cells
-    document.querySelectorAll('.projects-section .cells .cell').forEach(c => c.classList.remove('active'));
-
-    // Add 'active' class to the clicked cell
-    this.classList.add('active');
-
-    // Change the iframe content based on the clicked cell
-    const iframe = document.querySelector('.project-display-box iframe');
-    const url = this.getAttribute('data-url'); // Assuming each cell has a data-url attribute
-      if (iframe && url) {
-        iframe.src = url;
-      }
-  });
-});
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
